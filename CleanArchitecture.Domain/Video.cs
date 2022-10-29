@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Litethinking.NetInventory.Backend.Domain
 {
-    public class Video : BaseDomainModel
+    public class Inventory : BaseDomainModel
     {
-        public Video()
+        public Inventory()
         {
-            Actores = new HashSet<Actor>();
+            Products = new HashSet<Product>();
         }
         public string? Name { get; set; }
 
-        public int? StreamerId { get; set; }
-        public virtual Streamer? Streamer { get; set; }
-        public virtual ICollection<Actor> Actores { get; set; }
+        public int? CompanyId { get; set; }
+        public virtual Company? Company { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         public virtual Director Director { get; set; }
 
 

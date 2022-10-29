@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Litethinking.NetInventory.Backend.Data.Migrations
 {
-    [DbContext(typeof(StreamerDbContext))]
+    [DbContext(typeof(CompanyDbContext))]
     [Migration("20220806133543_MigrationInicial")]
     partial class MigrationInicial
     {
@@ -25,7 +25,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Streamer", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,10 +41,10 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Streamers");
+                    b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Video", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StreamerId")
+                    b.Property<int?>("CompanyId")
                         .HasColumnType("int");
 
                     b.Property<int?>("StrimerId")
@@ -63,18 +63,18 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StreamerId");
+                    b.HasIndex("CompanyId");
 
-                    b.ToTable("Videos");
+                    b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Video", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
-                    b.HasOne("CleanArchitecture.Domain.Streamer", "Streamer")
+                    b.HasOne("CleanArchitecture.Domain.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("StreamerId");
+                        .HasForeignKey("CompanyId");
 
-                    b.Navigation("Streamer");
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

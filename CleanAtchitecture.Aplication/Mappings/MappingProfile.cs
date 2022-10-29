@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Litethinking.NetInventory.Backend.Application.Features.Directors.Commands.CreateDirector;
-using Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands;
-using Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands.UpdateStreamer;
-using Litethinking.NetInventory.Backend.Application.Features.Videos.Queries.GetVideosList;
+using Litethinking.NetInventory.Backend.Application.Features.Companies.Commands;
+using Litethinking.NetInventory.Backend.Application.Features.Companies.Commands.UpdateCompany;
+using Litethinking.NetInventory.Backend.Application.Features.Inventories.Queries.GetInventoriesList;
 using Litethinking.NetInventory.Backend.Domain;
 
 namespace Litethinking.NetInventory.Backend.Application.Mappings
@@ -11,10 +11,11 @@ namespace Litethinking.NetInventory.Backend.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Video, VideosVm>();
-            CreateMap<CreateStreamerCommand, Streamer>();
-            CreateMap<UpdateStreamerCommand, Streamer>();
+            CreateMap<Inventory, InventoriesVm>();
+            CreateMap<CreateCompanyCommand, Company>();
+            CreateMap<UpdateCompanyCommand, Company>();
             CreateMap<CreateDirectorCommand, Director>();
+            
         }
     }
 }

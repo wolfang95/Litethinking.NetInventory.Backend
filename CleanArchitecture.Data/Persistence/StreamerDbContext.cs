@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
 {
-    public class StreamerDbContext : DbContext
+    public class CompanyDbContext : DbContext
     {
-        public StreamerDbContext(DbContextOptions<StreamerDbContext> options) : base(options)
+        public CompanyDbContext(DbContextOptions<CompanyDbContext> options) : base(options)
         {
         }
 
@@ -14,7 +14,7 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer(@"Data Source=localhost; 
-        //        Initial Catalog=Streamer;user id=sa;password=VaxiDrez2025$")
+        //        Initial Catalog=Company;user id=sa;password=VaxiDrez2025$")
         //    .LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, Microsoft.Extensions.Logging.LogLevel.Information)
         //    .EnableSensitiveDataLogging();
         //}
@@ -43,32 +43,33 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Streamer>()
-                .HasMany(m => m.Videos)
-                .WithOne(m => m.Streamer)
-                .HasForeignKey(m => m.StreamerId)
+            modelBuilder.Entity<Company>()
+                .HasMany(m => m.Inventories)
+                .WithOne(m => m.Company)
+                .HasForeignKey(m => m.CompanyId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
 
 
-            modelBuilder.Entity<Video>()
-                .HasMany(p => p.Actores)
-                .WithMany(t => t.Videos)
-                .UsingEntity<VideoActor>(
-                    pt => pt.HasKey(e => new { e.ActorId, e.VideoId })
+            modelBuilder.Entity<Inventory>()
+                .HasMany(p => p.Products)
+                .WithMany(t => t.Inventories)
+                .UsingEntity<InventoryProduct>(
+                    pt => pt.HasKey(e => new { e.ProductId, e.InventoryId })
                 );
 
+            
+                
 
         }
 
 
-        public DbSet<Streamer>? Streamers { get; set; }
-
-        public DbSet<Video>? Videos { get; set; }
         public DbSet<Company>? Companies { get; set; }
 
-        public DbSet<Actor>? Actores { get; set; }
+        public DbSet<Inventory>? Inventories { get; set; }
+
+        public DbSet<Product>? Products { get; set; }
 
         public DbSet<Director>? Directores { get; set; }
 

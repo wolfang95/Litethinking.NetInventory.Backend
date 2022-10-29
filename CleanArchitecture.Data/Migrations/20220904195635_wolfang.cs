@@ -9,33 +9,33 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Director_Videos_VideoId",
+                name: "FK_Director_Inventories_InventoryId",
                 table: "Director");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_VideoActor_Actor_ActorId",
-                table: "VideoActor");
+                name: "FK_InventoryProduct_Product_ProductId",
+                table: "InventoryProduct");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Director",
                 table: "Director");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Actor",
-                table: "Actor");
+                name: "PK_Product",
+                table: "Product");
 
             migrationBuilder.RenameTable(
                 name: "Director",
                 newName: "Directores");
 
             migrationBuilder.RenameTable(
-                name: "Actor",
-                newName: "Actores");
+                name: "Product",
+                newName: "Products");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Director_VideoId",
+                name: "IX_Director_InventoryId",
                 table: "Directores",
-                newName: "IX_Directores_VideoId");
+                newName: "IX_Directores_InventoryId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Directores",
@@ -43,23 +43,23 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Actores",
-                table: "Actores",
+                name: "PK_Products",
+                table: "Products",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Directores_Videos_VideoId",
+                name: "FK_Directores_Inventories_InventoryId",
                 table: "Directores",
-                column: "VideoId",
-                principalTable: "Videos",
+                column: "InventoryId",
+                principalTable: "Inventories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_VideoActor_Actores_ActorId",
-                table: "VideoActor",
-                column: "ActorId",
-                principalTable: "Actores",
+                name: "FK_InventoryProduct_Products_ProductId",
+                table: "InventoryProduct",
+                column: "ProductId",
+                principalTable: "Products",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -67,33 +67,33 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Directores_Videos_VideoId",
+                name: "FK_Directores_Inventories_InventoryId",
                 table: "Directores");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_VideoActor_Actores_ActorId",
-                table: "VideoActor");
+                name: "FK_InventoryProduct_Products_ProductId",
+                table: "InventoryProduct");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Directores",
                 table: "Directores");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Actores",
-                table: "Actores");
+                name: "PK_Products",
+                table: "Products");
 
             migrationBuilder.RenameTable(
                 name: "Directores",
                 newName: "Director");
 
             migrationBuilder.RenameTable(
-                name: "Actores",
-                newName: "Actor");
+                name: "Products",
+                newName: "Product");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Directores_VideoId",
+                name: "IX_Directores_InventoryId",
                 table: "Director",
-                newName: "IX_Director_VideoId");
+                newName: "IX_Director_InventoryId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Director",
@@ -101,23 +101,23 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Actor",
-                table: "Actor",
+                name: "PK_Product",
+                table: "Product",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Director_Videos_VideoId",
+                name: "FK_Director_Inventories_InventoryId",
                 table: "Director",
-                column: "VideoId",
-                principalTable: "Videos",
+                column: "InventoryId",
+                principalTable: "Inventories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_VideoActor_Actor_ActorId",
-                table: "VideoActor",
-                column: "ActorId",
-                principalTable: "Actor",
+                name: "FK_InventoryProduct_Product_ProductId",
+                table: "InventoryProduct",
+                column: "ProductId",
+                principalTable: "Product",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
         }

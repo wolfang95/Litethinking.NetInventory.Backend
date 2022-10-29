@@ -1,4 +1,4 @@
-﻿using Litethinking.NetInventory.Backend.Application.Features.Videos.Queries.GetVideosList;
+﻿using Litethinking.NetInventory.Backend.Application.Features.Inventories.Queries.GetInventoriesList;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,23 +8,23 @@ namespace Litethinking.NetInventory.Backend.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class VideoController : ControllerBase
+    public class InventoryController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public VideoController(IMediator mediator)
+        public InventoryController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        [HttpGet("{username}", Name = "GetVideo")]
+        [HttpGet("{username}", Name = "GetInventory")]
         [Authorize]
-        [ProducesResponseType(typeof(IEnumerable<VideosVm>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<VideosVm>>> GetVideosByUsername(string username)
+        [ProducesResponseType(typeof(IEnumerable<InventoriesVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<InventoriesVm>>> GetInventoriesByUsername(string username)
         {
-            var query = new GetVideosListQuery(username);
-            var videos = await _mediator.Send(query);
-            return Ok(videos);
+            var query = new GetInventoriesListQuery(username);
+            var inventories = await _mediator.Send(query);
+            return Ok(inventories);
         }
     }
 

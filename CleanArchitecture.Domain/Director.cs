@@ -13,9 +13,9 @@ namespace Litethinking.NetInventory.Backend.Domain
 
         public string? LastName { get; set; }
 
-        public int VideoId { get; set; }
+        public int InventoryId { get; set; }
 
-        public virtual Video? Video { get; set; }
+        public virtual Inventory? Inventory { get; set; }
 
     }
 }

@@ -20,15 +20,15 @@ namespace Litethinking.NetInventory.Backend.Infrastructure
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
 
-            services.AddDbContext<StreamerDbContext>(options =>
+            services.AddDbContext<CompanyDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("ConnectionString"))
             );
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
 
-            services.AddScoped<IVideoRepository, VideoRepository>();
-            services.AddScoped<IStreamerRepository, StreamerRepository>();
+            services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<ICompanyRepository, CompanyRepository>();
 
             services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailService, EmailService>();

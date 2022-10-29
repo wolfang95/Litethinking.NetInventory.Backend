@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Litethinking.NetInventory.Backend.Data.Migrations
 {
-    [DbContext(typeof(StreamerDbContext))]
+    [DbContext(typeof(CompanyDbContext))]
     [Migration("20220828191843_CleanArchitectureWolfang")]
     partial class CleanArchitectureWolfang
     {
@@ -24,7 +24,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Actor", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -42,7 +42,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Actor");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
@@ -71,18 +71,18 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VideoId")
+                    b.Property<int>("InventoryId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("VideoId")
+                    b.HasIndex("InventoryId")
                         .IsUnique();
 
                     b.ToTable("Director");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Streamer", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Company", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,10 +110,10 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Streamers");
+                    b.ToTable("Companies");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Video", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -136,23 +136,23 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StreamerId")
+                    b.Property<int?>("CompanyId")
                         .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StreamerId");
+                    b.HasIndex("CompanyId");
 
-                    b.ToTable("Videos");
+                    b.ToTable("Inventories");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.VideoActor", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.InventoryProduct", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("VideoId")
+                    b.Property<int>("InventoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -170,56 +170,56 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ActorId", "VideoId");
+                    b.HasKey("ProductId", "InventoryId");
 
-                    b.HasIndex("VideoId");
+                    b.HasIndex("InventoryId");
 
-                    b.ToTable("VideoActor");
+                    b.ToTable("InventoryProduct");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
                 {
-                    b.HasOne("CleanArchitecture.Domain.Video", "Video")
+                    b.HasOne("CleanArchitecture.Domain.Inventory", "Inventory")
                         .WithOne("Director")
-                        .HasForeignKey("CleanArchitecture.Domain.Director", "VideoId")
+                        .HasForeignKey("CleanArchitecture.Domain.Director", "InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Video");
+                    b.Navigation("Inventory");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Video", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
-                    b.HasOne("CleanArchitecture.Domain.Streamer", "Streamer")
-                        .WithMany("Videos")
-                        .HasForeignKey("StreamerId")
+                    b.HasOne("CleanArchitecture.Domain.Company", "Company")
+                        .WithMany("Inventories")
+                        .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Streamer");
+                    b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.VideoActor", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.InventoryProduct", b =>
                 {
-                    b.HasOne("CleanArchitecture.Domain.Actor", null)
+                    b.HasOne("CleanArchitecture.Domain.Product", null)
                         .WithMany()
-                        .HasForeignKey("ActorId")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CleanArchitecture.Domain.Video", null)
+                    b.HasOne("CleanArchitecture.Domain.Inventory", null)
                         .WithMany()
-                        .HasForeignKey("VideoId")
+                        .HasForeignKey("InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Streamer", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Company", b =>
                 {
-                    b.Navigation("Videos");
+                    b.Navigation("Inventories");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Video", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
                     b.Navigation("Director")
                         .IsRequired();

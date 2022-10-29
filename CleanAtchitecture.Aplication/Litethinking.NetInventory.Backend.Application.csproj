@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -11,9 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Company\Commands\" />
-    <Folder Include="Features\Streamers\Queries\" />
-    <Folder Include="Features\Videos\Commands\" />
+    <Folder Include="Features\Companies\Queries\" />
+    <Folder Include="Features\Inventories\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

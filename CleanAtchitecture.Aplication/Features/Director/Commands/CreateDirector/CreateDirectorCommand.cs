@@ -7,6 +7,6 @@ namespace Litethinking.NetInventory.Backend.Application.Features.Directors.Comma
 
         public string Name { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public int VideoId { get; set; }
+        public int InventoryId { get; set; }
     }
 }

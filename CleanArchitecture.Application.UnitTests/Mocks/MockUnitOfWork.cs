@@ -12,13 +12,13 @@ namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mocks
         public static Mock<UnitOfWork> GetUnitOfWork()
         {
             Guid dbContextId = Guid.NewGuid();
-            var options = new DbContextOptionsBuilder<StreamerDbContext>()
-                .UseInMemoryDatabase(databaseName: $"StreamerDbContext-{dbContextId}")
+            var options = new DbContextOptionsBuilder<CompanyDbContext>()
+                .UseInMemoryDatabase(databaseName: $"CompanyDbContext-{dbContextId}")
                 .Options;
 
-            var streamerDbContextFake = new StreamerDbContext(options);
-            streamerDbContextFake.Database.EnsureDeleted();
-            var mockUnitOfWork = new Mock<UnitOfWork>(streamerDbContextFake);
+            var companyDbContextFake = new CompanyDbContext(options);
+            companyDbContextFake.Database.EnsureDeleted();
+            var mockUnitOfWork = new Mock<UnitOfWork>(companyDbContextFake);
 
 
             return mockUnitOfWork;

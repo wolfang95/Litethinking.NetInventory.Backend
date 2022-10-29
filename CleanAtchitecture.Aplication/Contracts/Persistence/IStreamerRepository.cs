@@ -2,7 +2,7 @@
 
 namespace Litethinking.NetInventory.Backend.Application.Contracts.Persistence
 {
-    public interface IStreamerRepository : IAsyncRepository<Streamer>
+    public interface ICompanyRepository : IAsyncRepository<Company>
     {
 
     }

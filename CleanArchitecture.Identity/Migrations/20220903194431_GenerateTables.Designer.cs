@@ -77,7 +77,7 @@ namespace Litethinking.NetInventory.Backend.Identity.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("TwoFactorEnabled")
+                    b.Property<bool>("TwoFproductEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
@@ -112,7 +112,7 @@ namespace Litethinking.NetInventory.Backend.Identity.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEJutG4UBNSlLgXuKcTRCzwBj3WaLq0v/Y702Nz/f0Bdac3XdOXn8aXmkrMGh3xorxw==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "fb6d7178-478f-41f1-a59a-d67b1f193086",
-                            TwoFactorEnabled = false,
+                            TwoFproductEnabled = false,
                             UserName = "wscorredor"
                         },
                         new
@@ -130,7 +130,7 @@ namespace Litethinking.NetInventory.Backend.Identity.Migrations
                             PasswordHash = "AQAAAAEAACcQAAAAEE8Nsr9ZymeaxuBXVlXRYEazrcZ7NebxlheuuIl1tWVgsar8DQ8UgK2DH8qasXjmJA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "2529f2f1-567f-4223-a574-3269ec9746e4",
-                            TwoFactorEnabled = false,
+                            TwoFproductEnabled = false,
                             UserName = "pepitoperez"
                         });
                 });

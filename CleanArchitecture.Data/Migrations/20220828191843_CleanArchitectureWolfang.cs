@@ -11,80 +11,80 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         {
             migrationBuilder.AddColumn<string>(
                 name: "CreatedBy",
-                table: "Videos",
+                table: "Inventories",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreationDate",
-                table: "Videos",
+                table: "Inventories",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "LastModifiedBy",
-                table: "Videos",
+                table: "Inventories",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastModifiedDate",
-                table: "Videos",
+                table: "Inventories",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "CreatedBy",
-                table: "VideoActor",
+                table: "InventoryProduct",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreationDate",
-                table: "VideoActor",
+                table: "InventoryProduct",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "Id",
-                table: "VideoActor",
+                table: "InventoryProduct",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<string>(
                 name: "LastModifiedBy",
-                table: "VideoActor",
+                table: "InventoryProduct",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastModifiedDate",
-                table: "VideoActor",
+                table: "InventoryProduct",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "CreatedBy",
-                table: "Streamers",
+                table: "Companies",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreationDate",
-                table: "Streamers",
+                table: "Companies",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "LastModifiedBy",
-                table: "Streamers",
+                table: "Companies",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastModifiedDate",
-                table: "Streamers",
+                table: "Companies",
                 type: "datetime2",
                 nullable: true);
 
@@ -117,55 +117,55 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "CreatedBy",
-                table: "Videos");
+                table: "Inventories");
 
             migrationBuilder.DropColumn(
                 name: "CreationDate",
-                table: "Videos");
+                table: "Inventories");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedBy",
-                table: "Videos");
+                table: "Inventories");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedDate",
-                table: "Videos");
+                table: "Inventories");
 
             migrationBuilder.DropColumn(
                 name: "CreatedBy",
-                table: "VideoActor");
+                table: "InventoryProduct");
 
             migrationBuilder.DropColumn(
                 name: "CreationDate",
-                table: "VideoActor");
+                table: "InventoryProduct");
 
             migrationBuilder.DropColumn(
                 name: "Id",
-                table: "VideoActor");
+                table: "InventoryProduct");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedBy",
-                table: "VideoActor");
+                table: "InventoryProduct");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedDate",
-                table: "VideoActor");
+                table: "InventoryProduct");
 
             migrationBuilder.DropColumn(
                 name: "CreatedBy",
-                table: "Streamers");
+                table: "Companies");
 
             migrationBuilder.DropColumn(
                 name: "CreationDate",
-                table: "Streamers");
+                table: "Companies");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedBy",
-                table: "Streamers");
+                table: "Companies");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedDate",
-                table: "Streamers");
+                table: "Companies");
 
             migrationBuilder.DropColumn(
                 name: "CreatedBy",

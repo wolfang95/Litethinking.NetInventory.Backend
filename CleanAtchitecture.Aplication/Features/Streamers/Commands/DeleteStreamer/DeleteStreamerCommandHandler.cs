@@ -5,38 +5,38 @@ using Litethinking.NetInventory.Backend.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands.DeleteStreamer
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands.DeleteCompany
 {
-    public class DeleteStreamerCommandHandler : IRequestHandler<DeleteStreamerCommand>
+    public class DeleteCompanyCommandHandler : IRequestHandler<DeleteCompanyCommand>
     {
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IStreamerRepository _streamerRepository;
+        //private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger<DeleteStreamerCommandHandler> _logger;
+        private readonly ILogger<DeleteCompanyCommandHandler> _logger;
 
-        public DeleteStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<DeleteStreamerCommandHandler> logger)
+        public DeleteCompanyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<DeleteCompanyCommandHandler> logger)
         {
-            //_streamerRepository = streamerRepository;
+            //_companyRepository = companyRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public async Task<Unit> Handle(DeleteStreamerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeleteCompanyCommand request, CancellationToken cancellationToken)
         {
-            var streamerToDelete = await _unitOfWork.StreamerRepository.GetByIdAsync(request.Id);
-            if (streamerToDelete == null)
+            var companyToDelete = await _unitOfWork.CompanyRepository.GetByIdAsync(request.Id);
+            if (companyToDelete == null)
             {
-                _logger.LogError($"{request.Id} streamer no existe en el sistema");
-                throw new NotFoundException(nameof(Streamer), request.Id);
+                _logger.LogError($"{request.Id} company no existe en el sistema");
+                throw new NotFoundException(nameof(Company), request.Id);
             }
 
-            //await _streamerRepository.DeleteAsync(streamerToDelete);
-            _unitOfWork.StreamerRepository.DeleteEntity(streamerToDelete);
+            //await _companyRepository.DeleteAsync(companyToDelete);
+            _unitOfWork.CompanyRepository.DeleteEntity(companyToDelete);
 
             await _unitOfWork.Complete();
 
-            _logger.LogInformation($"El {request.Id} streamer fue eliminado con exito");
+            _logger.LogInformation($"El {request.Id} company fue eliminado con exito");
 
             return Unit.Value;
         }

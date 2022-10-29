@@ -8,9 +8,9 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
 {
     public class RepositoryBase<T> : IAsyncRepository<T> where T : BaseDomainModel
     {
-        protected readonly StreamerDbContext _context;
+        protected readonly CompanyDbContext _context;
 
-        public RepositoryBase(StreamerDbContext context)
+        public RepositoryBase(CompanyDbContext context)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }

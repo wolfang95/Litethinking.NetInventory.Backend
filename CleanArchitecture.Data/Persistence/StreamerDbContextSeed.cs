@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
 {
-    public class StreamerDbContextSeed
+    public class CompanyDbContextSeed
     {
-        public static async Task SeedAsync(StreamerDbContext context, ILogger<StreamerDbContextSeed> logger)
+        public static async Task SeedAsync(CompanyDbContext context, ILogger<CompanyDbContextSeed> logger)
         {
-            if (!context.Streamers!.Any())
+            if (!context.Companies!.Any())
             {
-                context.Streamers!.AddRange(GetPreconfiguredStreamer());
+                context.Companies!.AddRange(GetPreconfiguredCompany());
                 await context.SaveChangesAsync();
-                logger.LogInformation("Estamos insertando nuevos records al db {context}", typeof(StreamerDbContext).Name);
+                logger.LogInformation("Estamos insertando nuevos records al db {context}", typeof(CompanyDbContext).Name);
             }
 
         }
 
-        private static IEnumerable<Streamer> GetPreconfiguredStreamer()
+        private static IEnumerable<Company> GetPreconfiguredCompany()
         {
-            return new List<Streamer>
+            return new List<Company>
             {
-                new Streamer {CreatedBy = "wolfang", Name = "Netflix HBP", Url = "httpcom" },
-                new Streamer {CreatedBy = "wolfang", Name = "Netflix VIP", Url = "httpcom" },
+                new Company {CreatedBy = "wolfang", Name = "Netflix HBP", Url = "httpcom" },
+                new Company {CreatedBy = "wolfang", Name = "Netflix VIP", Url = "httpcom" },
             };
 
         }

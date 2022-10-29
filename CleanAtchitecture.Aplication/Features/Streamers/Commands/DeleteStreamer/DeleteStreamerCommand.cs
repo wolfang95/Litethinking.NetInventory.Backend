@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands.DeleteStreamer
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands.DeleteCompany
 {
-    public class DeleteStreamerCommand : IRequest
+    public class DeleteCompanyCommand : IRequest
     {
         public int Id { get; set; }
 

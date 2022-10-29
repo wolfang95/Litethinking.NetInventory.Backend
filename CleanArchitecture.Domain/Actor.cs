@@ -1,16 +1,16 @@
 ﻿
 namespace Litethinking.NetInventory.Backend.Domain
 {
-    public class Actor
+    public class Product
     {
-        public Actor()
+        public Product()
         {
-            Videos = new HashSet<Video>();
+            Inventories = new HashSet<Inventory>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
-        public virtual ICollection<Video> Videos { get; set; }
+        public virtual ICollection<Inventory> Inventories { get; set; }
 
     }
 }

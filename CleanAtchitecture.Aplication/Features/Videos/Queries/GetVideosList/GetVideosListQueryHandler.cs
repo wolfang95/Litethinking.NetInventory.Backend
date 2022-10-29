@@ -2,26 +2,26 @@
 using Litethinking.NetInventory.Backend.Application.Contracts.Persistence;
 using MediatR;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Videos.Queries.GetVideosList
+namespace Litethinking.NetInventory.Backend.Application.Features.Inventories.Queries.GetInventoriesList
 {
-    public class GetVideosListQueryHandler : IRequestHandler<GetVideosListQuery, List<VideosVm>>
+    public class GetInventoriesListQueryHandler : IRequestHandler<GetInventoriesListQuery, List<InventoriesVm>>
     {
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IVideoRepository _videoRepository;
+        //private readonly IInventoryRepository _inventoryRepository;
         private readonly IMapper _mapper;
 
-        public GetVideosListQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public GetInventoriesListQueryHandler(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            //_videoRepository = videoRepository;
+            //_inventoryRepository = inventoryRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
-        public async Task<List<VideosVm>> Handle(GetVideosListQuery request, CancellationToken cancellationToken)
+        public async Task<List<InventoriesVm>> Handle(GetInventoriesListQuery request, CancellationToken cancellationToken)
         {
-            var videoList = await _unitOfWork.VideoRepository.GetVideoByUsername(request._Username);
+            var inventoryList = await _unitOfWork.InventoryRepository.GetInventoryByUsername(request._Username);
 
-            return _mapper.Map<List<VideosVm>>(videoList);
+            return _mapper.Map<List<InventoriesVm>>(inventoryList);
         }
     }
 }

@@ -5,19 +5,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
 {
-    public class VideoRepository : RepositoryBase<Video>, IVideoRepository
+    public class InventoryRepository : RepositoryBase<Inventory>, IInventoryRepository
     {
-        public VideoRepository(StreamerDbContext context) : base(context)
+        public InventoryRepository(CompanyDbContext context) : base(context)
         {
         }
-        public async Task<Video> GetVideoByName(string nombreVideo)
+        public async Task<Inventory> GetInventoryByName(string nombreInventory)
         {
-            return await _context.Videos!.Where(o => o.Name == nombreVideo).FirstOrDefaultAsync();
+            return await _context.Inventories!.Where(o => o.Name == nombreInventory).FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Video>> GetVideoByUsername(string username)
+        public async Task<IEnumerable<Inventory>> GetInventoryByUsername(string username)
         {
-            return await _context.Videos!.Where(v => v.CreatedBy == username).ToListAsync();
+            return await _context.Inventories!.Where(v => v.CreatedBy == username).ToListAsync();
         }
 
 

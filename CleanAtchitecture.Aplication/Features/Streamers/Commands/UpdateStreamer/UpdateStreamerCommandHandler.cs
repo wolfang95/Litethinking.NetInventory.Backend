@@ -5,45 +5,45 @@ using Litethinking.NetInventory.Backend.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands.UpdateStreamer
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands.UpdateCompany
 {
-    public class DeleteStreamerCommandHandler : IRequestHandler<UpdateStreamerCommand>
+    public class DeleteCompanyCommandHandler : IRequestHandler<UpdateCompanyCommand>
     {
         private readonly IUnitOfWork _unitOfWork;
-        //private readonly IStreamerRepository _streamerRepository;
+        //private readonly ICompanyRepository _companyRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger<DeleteStreamerCommandHandler> _logger;
+        private readonly ILogger<DeleteCompanyCommandHandler> _logger;
 
-        public DeleteStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, Contracts.Infrastructure.IEmailService @object, ILogger<DeleteStreamerCommandHandler> logger)
+        public DeleteCompanyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, Contracts.Infrastructure.IEmailService @object, ILogger<DeleteCompanyCommandHandler> logger)
         {
-            //_streamerRepository = streamerRepository;
+            //_companyRepository = companyRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _logger = logger;
         }
 
-        public async Task<Unit> Handle(UpdateStreamerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateCompanyCommand request, CancellationToken cancellationToken)
         {
-            //var streamerToUpdate =  await  _streamerRepository.GetByIdAsync(request.Id);
-            var streamerToUpdate = await _unitOfWork.StreamerRepository.GetByIdAsync(request.Id);
+            //var companyToUpdate =  await  _companyRepository.GetByIdAsync(request.Id);
+            var companyToUpdate = await _unitOfWork.CompanyRepository.GetByIdAsync(request.Id);
 
-            if (streamerToUpdate == null)
+            if (companyToUpdate == null)
             {
-                _logger.LogError($"No se encontro el streamer id {request.Id}");
-                throw new NotFoundException(nameof(Streamer), request.Id);
+                _logger.LogError($"No se encontro el company id {request.Id}");
+                throw new NotFoundException(nameof(Company), request.Id);
             }
 
-            _mapper.Map(request, streamerToUpdate, typeof(UpdateStreamerCommand), typeof(Streamer));
+            _mapper.Map(request, companyToUpdate, typeof(UpdateCompanyCommand), typeof(Company));
 
 
 
-            //await _streamerRepository.UpdateAsync(streamerToUpdate);
+            //await _companyRepository.UpdateAsync(companyToUpdate);
 
-            _unitOfWork.StreamerRepository.UpdateEntity(streamerToUpdate);
+            _unitOfWork.CompanyRepository.UpdateEntity(companyToUpdate);
 
             await _unitOfWork.Complete();
 
-            _logger.LogInformation($"La operacion fue exitosa actualizando el streamer {request.Id}");
+            _logger.LogInformation($"La operacion fue exitosa actualizando el company {request.Id}");
 
             return Unit.Value;
         }

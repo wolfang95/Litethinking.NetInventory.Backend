@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands.UpdateStreamer
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands.UpdateCompany
 {
-    public class UpdateStreamerCommandValidator : AbstractValidator<UpdateStreamerCommand>
+    public class UpdateCompanyCommandValidator : AbstractValidator<UpdateCompanyCommand>
     {
-        public UpdateStreamerCommandValidator()
+        public UpdateCompanyCommandValidator()
         {
             RuleFor(x => x.Name)
                 .NotNull().WithMessage("{Name} no permite valores nulos");

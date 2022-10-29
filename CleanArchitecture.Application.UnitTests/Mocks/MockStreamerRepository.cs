@@ -8,23 +8,23 @@ using Moq;
 
 namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mock
 {
-    public static class MockStreamerRepository
+    public static class MockCompanyRepository
     {
-        public static void AddDataStreamerRepository(StreamerDbContext streamerDbContextFake)
+        public static void AddDataCompanyRepository(CompanyDbContext companyDbContextFake)
         {
             var fixture = new Fixture();
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var streamers = fixture.CreateMany<Streamer>().ToList();
+            var companys = fixture.CreateMany<Company>().ToList();
 
-            streamers.Add(fixture.Build<Streamer>()
+            companys.Add(fixture.Build<Company>()
                .With(tr => tr.Id, 8001)
-               .Without(tr => tr.Videos)
+               .Without(tr => tr.Inventories)
                .Create()
            );
 
-            streamerDbContextFake.Streamers!.AddRange(streamers);
-            streamerDbContextFake.SaveChanges();
+            companyDbContextFake.Companies!.AddRange(companys);
+            companyDbContextFake.SaveChanges();
 
         }
     }

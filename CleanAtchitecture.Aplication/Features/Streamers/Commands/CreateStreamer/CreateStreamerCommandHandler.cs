@@ -6,52 +6,52 @@ using Litethinking.NetInventory.Backend.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands
 {
-    public class CreateStreamerCommandHandler : IRequestHandler<CreateStreamerCommand, int>
+    public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommand, int>
     {
-        //private readonly IStreamerRepository _streamerRepository;
+        //private readonly ICompanyRepository _companyRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailservice;
-        private readonly ILogger<CreateStreamerCommandHandler> _logger;
+        private readonly ILogger<CreateCompanyCommandHandler> _logger;
 
-        public CreateStreamerCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IEmailService emailservice, ILogger<CreateStreamerCommandHandler> logger)
+        public CreateCompanyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IEmailService emailservice, ILogger<CreateCompanyCommandHandler> logger)
         {
-            //_streamerRepository = streamerRepository;
+            //_companyRepository = companyRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _emailservice = emailservice;
             _logger = logger;
         }
 
-        public async Task<int> Handle(CreateStreamerCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
-            var streamerEntity = _mapper.Map<Streamer>(request);
-            //var newStreamer = await _streamerRepository.AddAsync(streamerEntity);
+            var companyEntity = _mapper.Map<Company>(request);
+            //var newCompany = await _companyRepository.AddAsync(companyEntity);
 
-            _unitOfWork.StreamerRepository.AddEntity(streamerEntity);
+            _unitOfWork.CompanyRepository.AddEntity(companyEntity);
 
             var result = await _unitOfWork.Complete();
 
             if (result <= 0)
             {
-                throw new Exception($"No se pudo insertar el record de streamer");
+                throw new Exception($"No se pudo insertar el record de company");
             }
 
-            _logger.LogInformation($"Streamer {streamerEntity.Id} fue creado existosamente");
+            _logger.LogInformation($"Company {companyEntity.Id} fue creado existosamente");
 
-            await SendEmail(streamerEntity);
+            await SendEmail(companyEntity);
 
-            return streamerEntity.Id;
+            return companyEntity.Id;
         }
 
-        private async Task SendEmail(Streamer streamer)
+        private async Task SendEmail(Company company)
         {
             var email = new Email
             {
                 To = "corredor.wolfang@gmail.com",
-                Body = "La compania de streamer se creo correctamente",
+                Body = "La compania de company se creo correctamente",
                 Subject = "Mensaje de alerta"
             };
 
@@ -61,7 +61,7 @@ namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Comma
             }
             catch (Exception ex)
             {
-                _logger.LogError($"Errores enviando el email de {streamer.Id}");
+                _logger.LogError($"Errores enviando el email de {company.Id}");
             }
 
         }

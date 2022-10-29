@@ -1,9 +1,9 @@
-﻿namespace Litethinking.NetInventory.Backend.Application.Features.Videos.Queries.GetVideosList
+﻿namespace Litethinking.NetInventory.Backend.Application.Features.Inventories.Queries.GetInventoriesList
 {
-    public class VideosVm
+    public class InventoriesVm
     {
         public string? Name { get; set; }
-        public int? StreamerId { get; set; }
+        public int? CompanyId { get; set; }
        
     }
 }

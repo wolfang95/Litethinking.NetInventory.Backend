@@ -8,23 +8,23 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private Hashtable _repositories;
-        private readonly StreamerDbContext _context;
+        private readonly CompanyDbContext _context;
 
-        private IVideoRepository _videoRepository;
-        private IStreamerRepository _streamerRepository;
+        private IInventoryRepository _inventoryRepository;
+        private ICompanyRepository _companyRepository;
 
         //public ICompanyRepository
 
-        public IVideoRepository VideoRepository => _videoRepository ??= new VideoRepository(_context);
+        public IInventoryRepository InventoryRepository => _inventoryRepository ??= new InventoryRepository(_context);
 
-        public IStreamerRepository StreamerRepository => _streamerRepository ??= new StreamerRepository(_context);
+        public ICompanyRepository CompanyRepository => _companyRepository ??= new CompanyRepository(_context);
 
-        public UnitOfWork(StreamerDbContext context)
+        public UnitOfWork(CompanyDbContext context)
         {
             _context = context;
         }
 
-        public StreamerDbContext StreamerDbContext => _context;
+        public CompanyDbContext CompanyDbContext => _context;
 
         public async Task<int> Complete()
         {

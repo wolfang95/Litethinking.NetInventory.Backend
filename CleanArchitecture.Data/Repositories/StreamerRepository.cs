@@ -4,9 +4,9 @@ using Litethinking.NetInventory.Backend.Infrastructure.Persistence;
 
 namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
 {
-    public class StreamerRepository : RepositoryBase<Streamer>, IStreamerRepository
+    public class CompanyRepository : RepositoryBase<Company>, ICompanyRepository
     {
-        public StreamerRepository(StreamerDbContext context) : base(context)
+        public CompanyRepository(CompanyDbContext context) : base(context)
         { }
     }
 }

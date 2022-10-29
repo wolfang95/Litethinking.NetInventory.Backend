@@ -3,10 +3,10 @@
 
 namespace Litethinking.NetInventory.Backend.Application.Contracts.Persistence
 {
-    public interface IVideoRepository : IAsyncRepository<Video>
+    public interface IInventoryRepository : IAsyncRepository<Inventory>
     {
-        Task<Video> GetVideoByName(string nombreVideo);
-        Task<IEnumerable<Video>> GetVideoByUsername(string username);
+        Task<Inventory> GetInventoryByName(string nombreInventory);
+        Task<IEnumerable<Inventory>> GetInventoryByUsername(string username);
 
     }
 }

@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Streamers.Commands
+namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Commands
 {
-    public class CreateStreamerCommandValidator : AbstractValidator <CreateStreamerCommand>
+    public class CreateCompanyCommandValidator : AbstractValidator <CreateCompanyCommand>
     {
-        public CreateStreamerCommandValidator()
+        public CreateCompanyCommandValidator()
         {
             RuleFor(p => p.Name)
                 .NotEmpty().WithMessage("{Nombre} no puede estar en blanco")

@@ -4,22 +4,22 @@ using Litethinking.NetInventory.Backend.Infrastructure.Persistence;
 
 namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mocks
 {
-    public static class MockVideoRepository
+    public static class MockInventoryRepository
     {
-        public static void AddDataVideoRepository(StreamerDbContext streamerDbContextFake)
+        public static void AddDataInventoryRepository(CompanyDbContext companyDbContextFake)
         {
             var fixture = new Fixture();
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var videos = fixture.CreateMany<Video>().ToList();
+            var inventories = fixture.CreateMany<Inventory>().ToList();
 
-            videos.Add(fixture.Build<Video>()
+            inventories.Add(fixture.Build<Inventory>()
                 .With(tr => tr.CreatedBy, "vaxidrez")
                 .Create()
             );
 
-            streamerDbContextFake.Videos!.AddRange(videos);
-            streamerDbContextFake.SaveChanges();
+            companyDbContextFake.Inventories!.AddRange(inventories);
+            companyDbContextFake.SaveChanges();
         }
     }
 }

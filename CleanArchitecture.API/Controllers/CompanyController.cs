@@ -1,5 +1,5 @@
 ﻿
-
+/*
 using Litethinking.NetInventory.Backend.Application.Features.Company.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -21,16 +21,17 @@ namespace Litethinking.NetInventory.Backend.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("{username}", Name = "GetVideo")]
+        [HttpGet("{username}", Name = "GetInventory")]
         [Authorize]
         [ProducesResponseType(typeof(IEnumerable<CompaniesVm>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<CompaniesVm>>> GetVideosByUsername(string username)
+        public async Task<ActionResult<IEnumerable<CompaniesVm>>> GetInventoriesByUsername(string username)
         {
             var query = new GetCompaniesListQuery(username);
-            var videos = await _mediator.Send(query);
-            return Ok(videos);
+            var inventories = await _mediator.Send(query);
+            return Ok(inventories);
         }
 
 
     }
 }
+*/

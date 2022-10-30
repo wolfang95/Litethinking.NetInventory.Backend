@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Companies\NewFolder\**" />
+    <EmbeddedResource Remove="Features\Companies\NewFolder\**" />
+    <None Remove="Features\Companies\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CleanArchitecture.Domain\Litethinking.NetInventory.Backend.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Companies\Queries\" />
     <Folder Include="Features\Inventories\Commands\" />
   </ItemGroup>
 

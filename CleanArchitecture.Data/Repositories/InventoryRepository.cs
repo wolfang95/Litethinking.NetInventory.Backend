@@ -10,6 +10,11 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
         public InventoryRepository(CompanyDbContext context) : base(context)
         {
         }
+
+        public async Task<IEnumerable<Inventory>> GetInventoryByCompanyId(int CompanyId)
+        {
+            return await _context.Inventories!.Where(v => v.CompanyId == CompanyId).ToListAsync();
+        }
         public async Task<Inventory> GetInventoryByName(string nombreInventory)
         {
             return await _context.Inventories!.Where(o => o.Name == nombreInventory).FirstOrDefaultAsync();

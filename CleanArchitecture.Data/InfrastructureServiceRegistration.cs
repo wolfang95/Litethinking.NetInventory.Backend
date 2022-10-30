@@ -1,6 +1,7 @@
 ﻿using Litethinking.NetInventory.Backend.Application.Contracts.Infrastructure;
 using Litethinking.NetInventory.Backend.Application.Contracts.Persistence;
 using Litethinking.NetInventory.Backend.Application.Models;
+using Litethinking.NetInventory.Backend.Infraestructure.AzureBlobStorage;
 using Litethinking.NetInventory.Backend.Infrastructure.Email;
 using Litethinking.NetInventory.Backend.Infrastructure.Persistence;
 using Litethinking.NetInventory.Backend.Infrastructure.Repositories;
@@ -32,6 +33,7 @@ namespace Litethinking.NetInventory.Backend.Infrastructure
 
             services.Configure<EmailSettings>(c => configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IAzureBlobStorageService, AzureBlobStorageService>();
 
             return services;
         }

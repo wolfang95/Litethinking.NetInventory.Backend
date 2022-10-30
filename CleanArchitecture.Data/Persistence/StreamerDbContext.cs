@@ -54,11 +54,11 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
 
             modelBuilder.Entity<Inventory>()
                 .HasMany(p => p.Products)
-                .WithMany(t => t.Inventories)
-                .UsingEntity<InventoryProduct>(
+                .WithMany(t => t.Inventories);
+                /*.UsingEntity<Litethinking.NetInventory.Backend.Domain.InventoryProduct>(
                     pt => pt.HasKey(e => new { e.ProductId, e.InventoryId })
                 );
-
+                */
             
                 
 

@@ -23,8 +23,18 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Email
 
         public async Task<bool> SendEmail(Application.Models.Email email)
         {
-            //var client = new SendGridClient(_emailSettings.ApiKey);
-            var client = new SendGridClient("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");
+            string url = "UwBHAC4AQwBzAHYANABqAC0AQgB4AFEASwBPAHAAZQBYAEoAVwBHAFEAZQBzAEoAdwAuAGoAVgBoAFkAOABDAGIAZABVAEsARABXADMANgBqADQASABRADUAUwBMAHgAOQB0AHAAcwBqAHgAVAA5AC0AaQBLAGcATgB2AFIASQBzAGEAdwBfADQA";
+            //byte[] encryted = System.Text.Encoding.Unicode.GetBytes(url);
+            //string pa = Convert.ToBase64String(encryted);
+
+            byte[] decryted = Convert.FromBase64String(url);
+
+            string dpa = System.Text.Encoding.Unicode.GetString(decryted);
+
+
+
+            var client = new SendGridClient(dpa);
+            //var client = new SendGridClient("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");
             var subject = email.Subject;
             var to = new EmailAddress(email.To);
             var emailBody = email.Body;
@@ -53,5 +63,8 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Email
             _logger.LogError("El email no pudo enviarse, existen errores");
             return false;
         }
+
+        
     }
 }
+

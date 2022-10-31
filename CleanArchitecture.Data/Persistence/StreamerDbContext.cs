@@ -71,7 +71,7 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
 
         public DbSet<Product>? Products { get; set; }
 
-        public DbSet<Director>? Directores { get; set; }
+        public DbSet<Report>? Reports { get; set; }
 
     }
 }

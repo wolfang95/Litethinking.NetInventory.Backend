@@ -13,12 +13,12 @@ namespace Litethinking.NetInventory.Backend.Domain
         {
             Products = new HashSet<Product>();
         }
-        public string? Name { get; set; }
+        public string? NameInventory { get; set; }
 
         public int? CompanyId { get; set; }
         public virtual Company? Company { get; set; }
         public virtual ICollection<Product> Products { get; set; }
-        public virtual Director Director { get; set; }
+        public virtual Report Report { get; set; }
 
 
     }

@@ -3,15 +3,15 @@ using Litethinking.NetInventory.Backend.Domain.Common;
 
 namespace Litethinking.NetInventory.Backend.Domain
 {
-    public class Director : BaseDomainModel
+    public class Report : BaseDomainModel
     {
-        public Director()
+        public Report()
         {
         }
 
-        public string? Name { get; set; }
+        public string? Export { get; set; }
 
-        public string? LastName { get; set; }
+        public string? User { get; set; }
 
         public int InventoryId { get; set; }
 

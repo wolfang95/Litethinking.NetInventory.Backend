@@ -17,7 +17,7 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
         }
         public async Task<Inventory> GetInventoryByName(string nombreInventory)
         {
-            return await _context.Inventories!.Where(o => o.Name == nombreInventory).FirstOrDefaultAsync();
+            return await _context.Inventories!.Where(o => o.NameInventory == nombreInventory).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Inventory>> GetInventoryByUsername(string username)

@@ -6,17 +6,17 @@ using Litethinking.NetInventory.Backend.Domain;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace Litethinking.NetInventory.Backend.Application.Features.Directors.Commands.CreateDirector
+namespace Litethinking.NetInventory.Backend.Application.Features.Reports.Commands.CreateReport
 {
-    public class CreateDirectorCommandHandler : IRequestHandler<CreateDirectorCommand, int>
+    public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, int>
     {
-        private readonly ILogger<CreateDirectorCommandHandler> _logger;
+        private readonly ILogger<CreateReportCommandHandler> _logger;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailService _emailservice;
         private readonly IAzureBlobStorageService _azureBlobStorageService;
 
-        public CreateDirectorCommandHandler(ILogger<CreateDirectorCommandHandler> logger, IMapper mapper, IUnitOfWork unitOfWork, IEmailService emailservice, IAzureBlobStorageService azureBlobStorageService)
+        public CreateReportCommandHandler(ILogger<CreateReportCommandHandler> logger, IMapper mapper, IUnitOfWork unitOfWork, IEmailService emailservice, IAzureBlobStorageService azureBlobStorageService)
         {
             _logger = logger;
             _mapper = mapper;
@@ -25,24 +25,24 @@ namespace Litethinking.NetInventory.Backend.Application.Features.Directors.Comma
             _azureBlobStorageService = azureBlobStorageService;
         }
 
-        public async Task<int> Handle(CreateDirectorCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateReportCommand request, CancellationToken cancellationToken)
         {
-            var directorEntity = _mapper.Map<Director>(request);
+            var reportEntity = _mapper.Map<Report>(request);
 
-            _unitOfWork.Repository<Director>().AddEntity(directorEntity);
+            _unitOfWork.Repository<Report>().AddEntity(reportEntity);
 
             var result = await _unitOfWork.Complete();
 
             if (result <= 0)
             {
-                _logger.LogError("No se inserto el record del director");
-                throw new Exception("No se pudo insertar el record del director");
+                _logger.LogError("No se inserto el record del report");
+                throw new Exception("No se pudo insertar el record del report");
             }
 
             await SendEmail();
             await UploadInventory();
 
-            return directorEntity.Id;
+            return reportEntity.Id;
         }
 
         private async Task SendEmail()

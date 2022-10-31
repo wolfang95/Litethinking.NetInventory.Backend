@@ -90,25 +90,25 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             migrationBuilder.AddColumn<string>(
                 name: "CreatedBy",
-                table: "Director",
+                table: "Report",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "CreationDate",
-                table: "Director",
+                table: "Report",
                 type: "datetime2",
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
                 name: "LastModifiedBy",
-                table: "Director",
+                table: "Report",
                 type: "nvarchar(max)",
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastModifiedDate",
-                table: "Director",
+                table: "Report",
                 type: "datetime2",
                 nullable: true);
         }
@@ -169,19 +169,19 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             migrationBuilder.DropColumn(
                 name: "CreatedBy",
-                table: "Director");
+                table: "Report");
 
             migrationBuilder.DropColumn(
                 name: "CreationDate",
-                table: "Director");
+                table: "Report");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedBy",
-                table: "Director");
+                table: "Report");
 
             migrationBuilder.DropColumn(
                 name: "LastModifiedDate",
-                table: "Director");
+                table: "Report");
         }
     }
 }

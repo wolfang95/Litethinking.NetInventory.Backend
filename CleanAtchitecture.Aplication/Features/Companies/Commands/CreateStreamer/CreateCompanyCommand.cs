@@ -4,8 +4,8 @@ namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Comma
 {
     public class CreateCompanyCommand : IRequest<int>
     {
-        public string Name { get; set; } = string.Empty;
-        public string Url { get; set; } = string.Empty;
+        public string NIT { get; set; } = string.Empty;
+        public string CompanyName { get; set; } = string.Empty;
 
     }
 }

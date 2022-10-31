@@ -9,37 +9,37 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Director_Inventories_InventoryId",
-                table: "Director");
+                name: "FK_Report_Inventories_InventoryId",
+                table: "Report");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_InventoryProduct_Product_ProductId",
                 table: "InventoryProduct");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Director",
-                table: "Director");
+                name: "PK_Report",
+                table: "Report");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Product",
                 table: "Product");
 
             migrationBuilder.RenameTable(
-                name: "Director",
-                newName: "Directores");
+                name: "Report",
+                newName: "Reports");
 
             migrationBuilder.RenameTable(
                 name: "Product",
                 newName: "Products");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Director_InventoryId",
-                table: "Directores",
-                newName: "IX_Directores_InventoryId");
+                name: "IX_Report_InventoryId",
+                table: "Reports",
+                newName: "IX_Reports_InventoryId");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Directores",
-                table: "Directores",
+                name: "PK_Reports",
+                table: "Reports",
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
@@ -48,8 +48,8 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Directores_Inventories_InventoryId",
-                table: "Directores",
+                name: "FK_Reports_Inventories_InventoryId",
+                table: "Reports",
                 column: "InventoryId",
                 principalTable: "Inventories",
                 principalColumn: "Id",
@@ -67,37 +67,37 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Directores_Inventories_InventoryId",
-                table: "Directores");
+                name: "FK_Reports_Inventories_InventoryId",
+                table: "Reports");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_InventoryProduct_Products_ProductId",
                 table: "InventoryProduct");
 
             migrationBuilder.DropPrimaryKey(
-                name: "PK_Directores",
-                table: "Directores");
+                name: "PK_Reports",
+                table: "Reports");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Products",
                 table: "Products");
 
             migrationBuilder.RenameTable(
-                name: "Directores",
-                newName: "Director");
+                name: "Reports",
+                newName: "Report");
 
             migrationBuilder.RenameTable(
                 name: "Products",
                 newName: "Product");
 
             migrationBuilder.RenameIndex(
-                name: "IX_Directores_InventoryId",
-                table: "Director",
-                newName: "IX_Director_InventoryId");
+                name: "IX_Reports_InventoryId",
+                table: "Report",
+                newName: "IX_Report_InventoryId");
 
             migrationBuilder.AddPrimaryKey(
-                name: "PK_Director",
-                table: "Director",
+                name: "PK_Report",
+                table: "Report",
                 column: "Id");
 
             migrationBuilder.AddPrimaryKey(
@@ -106,8 +106,8 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Director_Inventories_InventoryId",
-                table: "Director",
+                name: "FK_Report_Inventories_InventoryId",
+                table: "Report",
                 column: "InventoryId",
                 principalTable: "Inventories",
                 principalColumn: "Id",

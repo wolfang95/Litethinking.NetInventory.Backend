@@ -45,7 +45,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Report", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.HasIndex("InventoryId")
                         .IsUnique();
 
-                    b.ToTable("Directores");
+                    b.ToTable("Reports");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Company", b =>
@@ -177,11 +177,11 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.ToTable("InventoryProduct");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Report", b =>
                 {
                     b.HasOne("CleanArchitecture.Domain.Inventory", "Inventory")
-                        .WithOne("Director")
-                        .HasForeignKey("CleanArchitecture.Domain.Director", "InventoryId")
+                        .WithOne("Report")
+                        .HasForeignKey("CleanArchitecture.Domain.Report", "InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -221,7 +221,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
-                    b.Navigation("Director")
+                    b.Navigation("Report")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

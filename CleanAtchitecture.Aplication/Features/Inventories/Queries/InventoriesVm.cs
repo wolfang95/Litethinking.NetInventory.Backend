@@ -2,7 +2,7 @@
 {
     public class InventoriesVm
     {
-        public string? Name { get; set; }
+        public string? NameInventory { get; set; }
         public int? CompanyId { get; set; }
        
     }

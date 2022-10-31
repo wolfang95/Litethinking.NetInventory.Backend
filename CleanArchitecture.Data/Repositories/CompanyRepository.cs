@@ -17,9 +17,9 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Repositories
 
 
 
-        public async Task<Company> GetInventoryByName(string nombreInventory)
+        public async Task<Company> GetInventoryByName(string nitSerial)
         {
-            return await _context.Companies!.Where(o => o.Name.ToString() == nombreInventory).FirstOrDefaultAsync();
+            return await _context.Companies!.Where(o => o.NIT.ToString() == nitSerial).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<Company>> GetCompanyByUsername(string username)

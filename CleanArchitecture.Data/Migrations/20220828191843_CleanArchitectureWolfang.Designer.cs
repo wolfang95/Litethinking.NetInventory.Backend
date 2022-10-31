@@ -45,7 +45,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.ToTable("Product");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Report", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +79,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.HasIndex("InventoryId")
                         .IsUnique();
 
-                    b.ToTable("Director");
+                    b.ToTable("Report");
                 });
 
             modelBuilder.Entity("CleanArchitecture.Domain.Company", b =>
@@ -102,10 +102,10 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NIT")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Url")
+                    b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -177,11 +177,11 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                     b.ToTable("InventoryProduct");
                 });
 
-            modelBuilder.Entity("CleanArchitecture.Domain.Director", b =>
+            modelBuilder.Entity("CleanArchitecture.Domain.Report", b =>
                 {
                     b.HasOne("CleanArchitecture.Domain.Inventory", "Inventory")
-                        .WithOne("Director")
-                        .HasForeignKey("CleanArchitecture.Domain.Director", "InventoryId")
+                        .WithOne("Report")
+                        .HasForeignKey("CleanArchitecture.Domain.Report", "InventoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -221,7 +221,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
 
             modelBuilder.Entity("CleanArchitecture.Domain.Inventory", b =>
                 {
-                    b.Navigation("Director")
+                    b.Navigation("Report")
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -25,8 +25,8 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Persistence
         {
             return new List<Company>
             {
-                new Company {CreatedBy = "wolfang", Name = "Netflix HBP", Url = "httpcom" },
-                new Company {CreatedBy = "wolfang", Name = "Netflix VIP", Url = "httpcom" },
+                new Company {CreatedBy = "wolfang", NIT = "Netflix HBP", CompanyName = "httpcom" },
+                new Company {CreatedBy = "wolfang", NIT = "Netflix VIP", CompanyName = "httpcom" },
             };
 
         }

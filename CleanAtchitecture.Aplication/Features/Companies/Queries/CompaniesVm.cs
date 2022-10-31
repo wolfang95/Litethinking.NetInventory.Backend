@@ -9,7 +9,7 @@ namespace Litethinking.NetInventory.Backend.Application.Features.Companies.Queri
     public class CompaniesVm
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
-        public string? Url { get; set; }
+        public string? NIT { get; set; }
+        public string? CompanyName { get; set; }
     }
 }

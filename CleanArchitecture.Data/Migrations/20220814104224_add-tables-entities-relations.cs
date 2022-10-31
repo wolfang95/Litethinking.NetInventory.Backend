@@ -32,8 +32,8 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NameProduct = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DescriptionProduct = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,20 +41,20 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Director",
+                name: "Report",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Export = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    User = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     InventoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Director", x => x.Id);
+                    table.PrimaryKey("PK_Report", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Director_Inventories_InventoryId",
+                        name: "FK_Report_Inventories_InventoryId",
                         column: x => x.InventoryId,
                         principalTable: "Inventories",
                         principalColumn: "Id",
@@ -86,8 +86,8 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Director_InventoryId",
-                table: "Director",
+                name: "IX_Report_InventoryId",
+                table: "Report",
                 column: "InventoryId",
                 unique: true);
 
@@ -112,7 +112,7 @@ namespace Litethinking.NetInventory.Backend.Data.Migrations
                 table: "Inventories");
 
             migrationBuilder.DropTable(
-                name: "Director");
+                name: "Report");
 
             migrationBuilder.DropTable(
                 name: "InventoryProduct");

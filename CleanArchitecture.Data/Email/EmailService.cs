@@ -33,7 +33,7 @@ namespace Litethinking.NetInventory.Backend.Infrastructure.Email
 
 
 
-            var client = new SendGridClient(dpa);
+            var client = new SendGridClient("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");
             //var client = new SendGridClient("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");
             var subject = email.Subject;
             var to = new EmailAddress(email.To);

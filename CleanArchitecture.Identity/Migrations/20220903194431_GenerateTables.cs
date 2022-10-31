@@ -40,7 +40,7 @@ namespace Litethinking.NetInventory.Backend.Identity.Migrations
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
-                    TwoFproductEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
@@ -167,7 +167,7 @@ namespace Litethinking.NetInventory.Backend.Identity.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "Apellidos", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nombre", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFproductEnabled", "UserName" },
+                columns: new[] { "Id", "AccessFailedCount", "Apellidos", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Nombre", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
                     { "294d249b-9b57-48c1-9689-11a91abb6447", 0, "Perez", "d9878e58-b24c-4c58-9e9c-b1af22dd5157", "peipitoperez@test.com", true, false, null, "Pepito", "peipitoperez@test.com", "pepitoperez", "AQAAAAEAACcQAAAAEE8Nsr9ZymeaxuBXVlXRYEazrcZ7NebxlheuuIl1tWVgsar8DQ8UgK2DH8qasXjmJA==", null, false, "2529f2f1-567f-4223-a574-3269ec9746e4", false, "pepitoperez" },

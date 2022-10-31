@@ -14,7 +14,6 @@ namespace Litethinking.NetInventory.Backend.Infraestructure.AzureBlobStorage
 
         public async Task<bool> AzureBlobStorageUpload(Application.Models.AzureBlobStorage email)
         {
-            string valor = "Hola estoy en la libreria :D";
             FileStream file = null;
             string containerRuta = "inventories";
             string conetcionString = "DefaultEndpointsProtocol=https;AccountName=litethinkingwolf;AccountKey=/GHjAZEgFbDjVjw1wtkorJMKt+nKq6tFpuy1sH7sc54Wp3iiApWtEqK4oJ6Q/yMKJfzyr8yd/45J+AStrEU3qA==;EndpointSuffix=core.windows.net";
@@ -22,7 +21,8 @@ namespace Litethinking.NetInventory.Backend.Infraestructure.AzureBlobStorage
             {
                 using (StreamWriter w = new StreamWriter(fs, Encoding.UTF8))
                 {
-                    w.WriteLine("<H1>Hello</H1>");
+                    w.WriteLine("<H1>Report from company</H1>");
+                    w.WriteLine("<H2>Technical test</H2>");
 
                 }
                 file = fs;

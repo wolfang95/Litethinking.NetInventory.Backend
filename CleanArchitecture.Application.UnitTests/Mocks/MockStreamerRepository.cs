@@ -6,25 +6,25 @@ using Litethinking.NetInventory.Backend.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
-namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mock
+namespace CleanArchitecture.Application.UnitTests.Mock
 {
-    public static class MockCompanyRepository
+    public static class MockStreamerRepository
     {
-        public static void AddDataCompanyRepository(CompanyDbContext companyDbContextFake)
+        public static void AddDataStreamerRepository(CompanyDbContext streamerDbContextFake)
         {
             var fixture = new Fixture();
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var companys = fixture.CreateMany<Company>().ToList();
+            var streamers = fixture.CreateMany<Company>().ToList();
 
-            companys.Add(fixture.Build<Company>()
+            streamers.Add(fixture.Build<Company>()
                .With(tr => tr.Id, 8001)
-               .Without(tr => tr.Inventories)
+               .Without(tr => tr.CompanyName)
                .Create()
            );
 
-            companyDbContextFake.Companies!.AddRange(companys);
-            companyDbContextFake.SaveChanges();
+            streamerDbContextFake.Companies!.AddRange(streamers);
+            streamerDbContextFake.SaveChanges();
 
         }
     }

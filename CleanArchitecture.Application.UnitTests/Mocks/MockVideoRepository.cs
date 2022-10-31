@@ -2,24 +2,24 @@
 using Litethinking.NetInventory.Backend.Domain;
 using Litethinking.NetInventory.Backend.Infrastructure.Persistence;
 
-namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mocks
+namespace CleanArchitecture.Application.UnitTests.Mocks
 {
-    public static class MockInventoryRepository
+    public static class MockVideoRepository
     {
-        public static void AddDataInventoryRepository(CompanyDbContext companyDbContextFake)
+        public static void AddDataVideoRepository(CompanyDbContext streamerDbContextFake)
         {
             var fixture = new Fixture();
             fixture.Behaviors.Add(new OmitOnRecursionBehavior());
 
-            var inventories = fixture.CreateMany<Inventory>().ToList();
+            var videos = fixture.CreateMany<Inventory>().ToList();
 
-            inventories.Add(fixture.Build<Inventory>()
-                .With(tr => tr.CreatedBy, "vaxidrez")
+            videos.Add(fixture.Build<Inventory>()
+                .With(tr => tr.CreatedBy, "wolf")
                 .Create()
             );
 
-            companyDbContextFake.Inventories!.AddRange(inventories);
-            companyDbContextFake.SaveChanges();
+            streamerDbContextFake.Inventories!.AddRange(videos);
+            streamerDbContextFake.SaveChanges();
         }
     }
 }

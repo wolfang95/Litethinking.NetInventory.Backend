@@ -1,4 +1,4 @@
-﻿namespace Litethinking.NetInventory.Backend.Application.UnitTests
+﻿namespace CleanArchitecture.Application.UnitTests
 {
     public class Class1
     {

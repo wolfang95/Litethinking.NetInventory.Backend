@@ -3,7 +3,7 @@ using Litethinking.NetInventory.Backend.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Moq;
 
-namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mocks
+namespace CleanArchitecture.Application.UnitTests.Mocks
 {
     public static class MockUnitOfWork
     {
@@ -13,12 +13,12 @@ namespace Litethinking.NetInventory.Backend.Application.UnitTests.Mocks
         {
             Guid dbContextId = Guid.NewGuid();
             var options = new DbContextOptionsBuilder<CompanyDbContext>()
-                .UseInMemoryDatabase(databaseName: $"CompanyDbContext-{dbContextId}")
+                .UseInMemoryDatabase(databaseName: $"StreamerDbContext-{dbContextId}")
                 .Options;
 
-            var companyDbContextFake = new CompanyDbContext(options);
-            companyDbContextFake.Database.EnsureDeleted();
-            var mockUnitOfWork = new Mock<UnitOfWork>(companyDbContextFake);
+            var streamerDbContextFake = new CompanyDbContext(options);
+            streamerDbContextFake.Database.EnsureDeleted();
+            var mockUnitOfWork = new Mock<UnitOfWork>(streamerDbContextFake);
 
 
             return mockUnitOfWork;

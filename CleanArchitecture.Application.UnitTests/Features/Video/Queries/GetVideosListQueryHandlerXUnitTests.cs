@@ -2,7 +2,7 @@
 using Litethinking.NetInventory.Backend.Application.Contracts.Persistence;
 using Litethinking.NetInventory.Backend.Application.Features.Inventories.Queries.GetInventoriesList;
 using Litethinking.NetInventory.Backend.Application.Mappings;
-using Litethinking.NetInventory.Backend.Application.UnitTests.Mocks;
+using CleanArchitecture.Application.UnitTests.Mocks;
 using Litethinking.NetInventory.Backend.Infrastructure.Repositories;
 using Moq;
 using Shouldly;
@@ -13,14 +13,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Litethinking.NetInventory.Backend.Application.UnitTests.Features.Inventory.Queries
+namespace CleanArchitecture.Application.UnitTests.Features.Video.Queries
 {
-    public class GetInventoriesListQueryHandlerXUnitTests
+    public class GetVideosListQueryHandlerXUnitTests
     {
         private readonly IMapper _mapper;
         private readonly Mock<UnitOfWork> _unitOfWork;
 
-        public GetInventoriesListQueryHandlerXUnitTests()
+        public GetVideosListQueryHandlerXUnitTests()
         {
             _unitOfWork = MockUnitOfWork.GetUnitOfWork();
             var mapperConfig = new MapperConfiguration(c =>
@@ -30,15 +30,15 @@ namespace Litethinking.NetInventory.Backend.Application.UnitTests.Features.Inven
             _mapper = mapperConfig.CreateMapper();
 
 
-            MockInventoryRepository.AddDataInventoryRepository(_unitOfWork.Object.CompanyDbContext);
+            MockVideoRepository.AddDataVideoRepository(_unitOfWork.Object.CompanyDbContext);
 
         }
 
         [Fact]
-        public async Task GetInventoryListTest()
+        public async Task GetVideoListTest()
         {
             var handler = new GetInventoriesListQueryHandler(_unitOfWork.Object, _mapper);
-            var request = new GetInventoriesListQuery("vaxidrez");
+            var request = new GetInventoriesListQuery("wolf");
 
             var result = await handler.Handle(request, CancellationToken.None);
 
